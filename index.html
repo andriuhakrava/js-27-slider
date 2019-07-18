@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+	<title>Слайдшоу</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="jquery.slideshow.css">
+	<style>
+		.wrap {
+			position: relative;
+			margin: 0 auto 80px;
+			width: 480px;
+		}
+		.wrap ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.prev, .next {
+			position: absolute;
+			top: 156px;
+			width: 48px;
+			height: 48px;
+			font-size: 0;
+			border-right: 3px solid white;
+			border-bottom: 3px solid white;
+			opacity: 0.6;
+			z-index: 1999;
+			cursor: pointer;
+		}
+		.prev:hover, .next:hover {
+			opacity: 1;
+		}
+		.prev {
+			left: 30px;
+			transform: rotate(135deg);
+		}
+		.next {
+			right: 30px;
+			transform: rotate(-45deg);
+		}
+		.pager {
+			margin: 0;
+			padding: 8px 0;
+			text-align: center;
+		}
+		.pager span {
+			display: inline-block;
+			margin: 0 4px;
+			width: 16px;
+			height: 16px;
+			border: 2px solid black;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+		.pager span:hover {
+			background: silver;
+		}
+		.pager span.active {
+			border-color: blue;
+		}
+		
+		#prev, #next {
+			position: fixed;
+			top: 8px;
+		}
+		#prev {
+			left: 8px;
+		}
+		#next {
+			right: 8px;
+		}
+	</style>
+</head>
+<body>
+
+<button id="prev">PREV</button>
+<button id="next">NEXT</button>
+
+<br><br><br>
+
+<div class="wrap">
+	<div class="slider">
+		<img src="img/slide1.jpg" alt="slide 1">
+		<img src="img/slide2.jpg" alt="slide 2">
+		<img src="img/slide3.jpg" alt="slide 3">
+		<img src="img/slide4.jpg" alt="slide 4">
+	</div>
+	<span class="prev">previous slide</span>
+	<span class="next">next slide</span>
+	<p class="pager">pager</p>
+</div>
+
+<div class="wrap">
+	<ul class="slider effect-slide">
+		<li><img src="img/slide1.jpg" alt="slide 1"></li>
+		<li><img src="img/slide2.jpg" alt="slide 2"></li>
+		<li><img src="img/slide3.jpg" alt="slide 3"></li>
+		<li><img src="img/slide4.jpg" alt="slide 4"></li>
+	</ul>
+	<span class="prev">previous slide</span>
+	<span class="next">next slide</span>
+	<p class="pager">pager</p>
+</div>
+
+<div class="wrap">
+	<div class="slider effect-rotate">
+		<img src="img/slide1.jpg" alt="slide 1">
+		<img src="img/slide2.jpg" alt="slide 2">
+		<img src="img/slide3.jpg" alt="slide 3">
+		<img src="img/slide4.jpg" alt="slide 4">
+	</div>
+	<span class="prev">previous slide</span>
+	<span class="next">next slide</span>
+	<p class="pager">pager</p>
+</div>
+
+<div class="wrap">
+	<ul class="slider effect-3d">
+		<li><img src="img/slide1.jpg" alt="slide 1"></li>
+		<li><img src="img/slide2.jpg" alt="slide 2"></li>
+		<li><img src="img/slide3.jpg" alt="slide 3"></li>
+		<li><img src="img/slide4.jpg" alt="slide 4"></li>
+	</ul>
+	<span class="prev">previous slide</span>
+	<span class="next">next slide</span>
+	<p class="pager">pager</p>
+</div>
+
+
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="jquery.slideshow.js"></script>
+
+<script>
+(function($){
+
+	$('.slider').slideshow742({
+		timeout: 2500,
+		prev: '#prev',
+		next: '#next'
+	}).each(function(){
+		let $slider = $(this);
+		$slider.on('mouseenter', function(){ $slider.slideshow742('stop')})
+		$slider.on('mouseleave', function(){ $slider.slideshow742('run')})
+	});
+
+})(jQuery);
+</script>
+
+</body>
+</html>

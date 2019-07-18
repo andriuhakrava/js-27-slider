@@ -1,0 +1,93 @@
+.s-show-742 {
+	position: relative;
+}
+.s-show-742 > * {
+	z-index: 1;
+}
+.s-show-742 > *:not(.active) {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+/* effect-fade */
+.s-show-742:not([class^='effect-'], [class*='effect-']) > *:not(.active),
+.s-show-742.effect-fade > *:not(.active) {
+	opacity: 0;
+}
+.s-show-742:not([class^='effect-'], [class*='effect-']) > *:not(.active),
+.s-show-742.effect-fade > *.active {
+	position: relative;
+	z-index: 5;
+	opacity: 1;
+	transition: opacity 1000ms;
+}
+.s-show-742:not([class^='effect-'], [class*='effect-']) > *:not(.active),
+.s-show-742.effect-fade > *.prevActive {
+	z-index: 2;
+	opacity: 1;
+}
+
+/* effect-slide */
+.s-show-742.effect-slide {
+	overflow: hidden;
+}
+
+.s-show-742.effect-slide > *.active {
+	position: relative;
+	z-index: 3;
+	top: 0;
+	left: 0;
+}
+
+.s-show-742.effect-slide > *.exActive {
+	left: -100%;
+	z-index: 6;
+	transition: left 1000ms;
+}
+
+/* effect-rotate */
+.s-show-742.effect-rotate > *.active {
+	position: relative;
+	z-index: 3;
+	top: 0;
+	left: 0;
+}
+
+.s-show-742.effect-rotate > *.exActive {
+	z-index: 6;
+	transform: rotate(720deg) scale(0);
+	transition: transform 1000ms;
+}
+
+/* effect-3d */
+.s-show-742.effect-3d {
+	position: relative;
+}
+
+.s-show-742.effect-3d > * {
+	position: absolute;
+	left: 0;
+	z-index: 1;
+	transform: scale(0);
+	transition: all 1000ms;
+}
+
+.s-show-742.effect-3d .prevActive,
+.s-show-742.effect-3d .nextActive {
+	transform: scale(0.5); 
+}
+
+.s-show-742.effect-3d .prevActive {
+	left: -50%;
+}
+
+.s-show-742.effect-3d .nextActive {
+	left: 50%;
+}
+
+.s-show-742.effect-3d .active {
+	position: relative;
+	z-index: 500;
+	transform: scale(1);
+}
