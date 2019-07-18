@@ -10,12 +10,14 @@
 			if (command === 'run') run(this);
 			return;
 		}
+		
 		options = $.extend({
 			timeout: 3000,
 			prev: null,
 			next: null,
 			pager: null
 		}, options);
+
 		this.each(function (){
 			this.sliderOptions = options;
 			let $slider = $(this);
@@ -32,13 +34,16 @@
 		function setPrevNext($slider){
 			let $prev = $slider.nextAll('.prev');
 			let $next = $slider.nextAll('.next');
+			
 			if (options.prev) $prev = $prev.add($(options.prev));
 			if (options.next) $next = $next.add($(options.next));
+			
 			$prev.on('click', function(){
 				stop($slider);
 				toSlide($slider, 'prev');
 				run($slider);
 			});
+			
 			$next.on('click', function(){
 				stop($slider);
 				toSlide($slider, 'next');
@@ -67,15 +72,18 @@
 		function setPager($slider){
 			let $pager = $slider.nextAll('.pager');
 			let html = '';
+			
 			$slider.children().each(function(){
 				html += '<span></span>';
 			});
-			$pager.html(html);//.children(':first').addClass('active');
+			
+			$pager.html(html);
 			$slider.on('slideChange', function(){
 				$pager.children('.active').removeClass('active');
 				let n = $slider.children('.active').index();
 				$pager.children().eq(n).addClass('active');
 			});
+			
 			$pager.children().on('click', function(){
 				let n = $(this).index();
 				stop($slider);
@@ -86,11 +94,14 @@
 		
 		function activePrevNext($slider, $active){
 			let $exActive = $slider.children('.active');
+			
 			$slider.children().removeClass('active exActive prevActive nextActive');
 			$active.addClass('active');
 			$exActive.addClass('exActive');
+			
 			let $prevActive = $active.prev();
 			let $nextActive = $active.next();
+			
 			if (!$prevActive.length) $prevActive = $slider.children(':last');
 			if (!$nextActive.length) $nextActive = $slider.children(':first');
 			$prevActive.addClass('prevActive');
